@@ -1,0 +1,48 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			
+			"type": "npm",
+			"script": "start",
+			"path": "client",
+			"problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Compiling...", // Signals the start of the task
+                    "endsPattern": "You can now view client in the browser." // Signals task initialization completion
+                }
+            },
+			"label": "react",
+			"detail": "react-scripts start",
+			"isBackground": true
+		},
+		{
+			"label": "Terminate All Tasks",
+			"command": "echo ${input:terminate}",
+			"type": "shell",
+			"problemMatcher": []
+		  },
+		  // launch browser
+		// {
+		// 	"label": "react",
+		// 	"type": "process",
+		// 	"command": "msedge",
+		// 	"args": ["http://localhost:3000"],
+		// 	"dependsOn": "react-start"
+			
+		// }
+	],
+	"inputs": [
+		{
+		  "id": "terminate",
+		  "type": "command",
+		  "command": "workbench.action.tasks.terminate",
+		  "args": "terminateAll"
+		}
+	  ]
+}
