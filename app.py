@@ -10,13 +10,20 @@ app = Flask(__name__, static_folder='client/build')
 @app.route('/')
 def serve():
 
-    # if debugger is on, serve the react app from port 3000
-    if app.debug:
-        # fwd 301 to react @ port 3000
-        return redirect("http://localhost:3000", code=302)
+    # if client/build folder exists then return the index.html file
+    if os.path.exists('client/build'):
+        return send_from_directory(app.static_folder, 'index.html')
+    else:
+        return {'message': 'client/build folder not found'}
+    
+
+# return static files in the client/build folder
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory(app.static_folder, path)
         
 
-    return send_from_directory(app.static_folder, 'index.html')
+
 
 
 # Flask API endpoint

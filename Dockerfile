@@ -31,7 +31,7 @@ RUN pip install -r requirements.txt --break-system-packages
 
 EXPOSE 8005
 # run flask on port 80 when the container launches
-CMD ["python3", "-m", "flask", "run", "--port=8005"]
+CMD ["python3", "-m", "flask", "run", "--port=8005", "--host=0.0.0.0"]
 
 
 
