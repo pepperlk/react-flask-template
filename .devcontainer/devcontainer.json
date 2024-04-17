@@ -29,6 +29,7 @@
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
 
+	"postCreateCommand": "pip install -r requirements.txt && cd client && npm install",
 	// Configure tool-specific properties.
 	// "customizations": {},
 
